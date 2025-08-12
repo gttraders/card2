@@ -527,7 +527,7 @@ function showUPIModal() {
     upiAmount.textContent = total;
     
     // Generate UPI QR Code
-    const upiId = document.getElementById('upiId').textContent;
+    const upiId = document.getElementById('upiId').textContent || 'demo@upi';
     const upiString = `upi://pay?pa=${upiId}&pn=DEMO CARD&am=${total}&cu=INR&tn=Order Payment`;
     
     // Clear previous QR code
@@ -544,8 +544,9 @@ function showUPIModal() {
             correctLevel: QRCode.CorrectLevel.M
         });
     } else {
-        // Fallback QR code generation
-        upiQRCode.innerHTML = `<div style="width: 200px; height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; border-radius: 10px;">QR Code<br>Generated</div>`;
+        // Fallback QR code generation using Google Charts API
+        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiString)}`;
+        upiQRCode.innerHTML = `<img src="${qrCodeUrl}" alt="UPI QR Code" style="width: 200px; height: 200px; border-radius: 10px;">`;
     }
     
     upiModal.classList.add('active');
@@ -558,7 +559,7 @@ function closeUPIModal() {
 
 function openUPIApp() {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const upiId = document.getElementById('upiId').textContent;
+    const upiId = document.getElementById('upiId').textContent || 'demo@upi';
     const upiString = `upi://pay?pa=${upiId}&pn=DEMO CARD&am=${total}&cu=INR&tn=Order Payment`;
     
     // Try to open UPI app
@@ -950,6 +951,81 @@ function openLightbox(imageUrl) {
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
     lightbox.classList.remove('active');
+}
+
+// Language Functions for Main Website
+function toggleMainLanguageDropdown() {
+    const dropdown = document.getElementById('mainLanguageOptions');
+    dropdown.classList.toggle('show');
+}
+
+function changeMainLanguage(langCode, event) {
+    if (event) {
+        event.stopPropagation();
+    }
+    
+    const languages = {
+        'en': 'EN',
+        'hi': 'हि',
+        'mr': 'मर',
+        'gu': 'ગુ',
+        'ta': 'த'
+    };
+    
+    document.getElementById('currentMainLanguage').textContent = languages[langCode];
+    document.getElementById('mainLanguageOptions').classList.remove('show');
+    
+    // Save language preference
+    localStorage.setItem('website_language', langCode);
+    
+    // Apply translations (this would typically fetch from your translations API)
+    applyTranslations(langCode);
+}
+
+function applyTranslations(langCode) {
+    // This function would apply translations to the website
+    // For now, we'll just show a message
+    showMessage(`Language changed to ${langCode.toUpperCase()}`, 'success');
+}
+
+// Enhanced mobile cart positioning
+function adjustMobileCart() {
+    const floatingCart = document.getElementById('floatingCart');
+    const floatingInquiry = document.getElementById('floatingInquiry');
+    
+    if (window.innerWidth <= 768) {
+        if (floatingCart) {
+            floatingCart.style.position = 'fixed';
+            floatingCart.style.bottom = '80px';
+            floatingCart.style.right = '15px';
+            floatingCart.style.top = 'auto';
+            floatingCart.style.transform = 'none';
+        }
+        
+        if (floatingInquiry) {
+            floatingInquiry.style.position = 'fixed';
+            floatingInquiry.style.bottom = '140px';
+            floatingInquiry.style.right = '15px';
+            floatingInquiry.style.top = 'auto';
+            floatingInquiry.style.transform = 'none';
+        }
+    } else {
+        if (floatingCart) {
+            floatingCart.style.position = 'fixed';
+            floatingCart.style.top = '50%';
+            floatingCart.style.right = '20px';
+            floatingCart.style.bottom = 'auto';
+            floatingCart.style.transform = 'translateY(-50%)';
+        }
+        
+        if (floatingInquiry) {
+            floatingInquiry.style.position = 'fixed';
+            floatingInquiry.style.top = 'calc(50% + 80px)';
+            floatingInquiry.style.right = '20px';
+            floatingInquiry.style.bottom = 'auto';
+            floatingInquiry.style.transform = 'none';
+        }
+    }
 }
 
 // Utility Functions

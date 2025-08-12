@@ -76,6 +76,20 @@
                 </a>
             </li>
             
+            <li class="nav-item">
+                <a href="social-media.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'social-media.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-share-alt"></i>
+                    <span>Social Media</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="leads.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'leads.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-gift"></i>
+                    <span>Free Website Leads</span>
+                </a>
+            </li>
+            
             <li class="nav-divider"></li>
             
             <li class="nav-item">

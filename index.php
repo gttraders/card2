@@ -211,12 +211,16 @@ $currentDomain = getCurrentDomain();
         
         /* Fixed banner sizes for mobile */
         .banner-container {
-            height: 150px;
+            height: 200px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
         
         @media (max-width: 768px) {
             .banner-container {
-                height: 120px;
+                height: 160px;
             }
             
             .inquiry-images {
@@ -226,12 +230,134 @@ $currentDomain = getCurrentDomain();
         
         @media (max-width: 480px) {
             .banner-container {
-                height: 100px;
+                height: 140px;
             }
             
             .scrolling-text {
                 font-size: 12px;
             }
+        }
+        
+        /* Remove PWA prompt */
+        .pwa-install-prompt {
+            display: none !important;
+        }
+        
+        /* Shopping Section Styles */
+        .shopping-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .shopping-section h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+        
+        .shopping-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        /* Inquiry Products Section */
+        .inquiry-products-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .inquiry-products-section h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+        
+        .inquiry-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        /* Mobile responsive improvements */
+        @media (max-width: 768px) {
+            .shopping-products,
+            .inquiry-products {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .product-card {
+                margin-bottom: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .shopping-products,
+            .inquiry-products {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        /* Language Selector for Main Website */
+        .language-selector-main {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 8px 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .language-selector-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .language-dropdown-main {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 10px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 150px;
+            display: none;
+            margin-top: 5px;
+        }
+        
+        .language-dropdown-main.show {
+            display: block;
+        }
+        
+        .language-option-main {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .language-option-main:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
         
         /* Improved cart modal */
@@ -359,18 +485,7 @@ $currentDomain = getCurrentDomain();
     </div>
 
     <!-- PWA Install Prompt -->
-    <div id="pwaInstallPrompt" class="pwa-install-prompt">
-        <div class="pwa-content">
-            <button class="close-pwa" onclick="closePWAPrompt()" style="position: absolute; right: 10px; top: 5px; background: none; border: none; color: var(--text-color); font-size: 16px; cursor: pointer;">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="pwa-text" style="display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px;">
-                <i class="fas fa-mobile-alt"></i>
-                <span>Add this website to your home screen for quick access!</span>
-                <button class="install-btn" onclick="installPWA()" style="background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 20px; font-size: 12px; cursor: pointer; margin-left: 10px;">Install</button>
-            </div>
-        </div>
-    </div>
+    <!-- PWA Install Prompt Removed -->
     
     <!-- Sticky Top Banner with Scrolling Text -->
     <div class="sticky-banner" id="stickyBanner">
@@ -383,7 +498,7 @@ $currentDomain = getCurrentDomain();
     </div>
 
     <!-- Auto-scrolling Top Banner -->
-    <div class="banner-container" id="topBanner" style="margin-top: 50px;">
+    <div class="banner-container" id="topBanner" style="margin-top: 80px;">
         <div class="banner-slider">
             <?php foreach ($banners as $banner): ?>
                 <div class="banner-slide">
@@ -396,6 +511,20 @@ $currentDomain = getCurrentDomain();
         <div class="view-counter">
             <i class="fas fa-eye"></i>
             <span><?php echo number_format($viewCount); ?></span>
+        </div>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="language-selector-main" onclick="toggleMainLanguageDropdown()">
+        <i class="fas fa-globe"></i>
+        <span id="currentMainLanguage">EN</span>
+        <i class="fas fa-chevron-down" style="font-size: 12px; margin-left: 5px;"></i>
+        <div class="language-dropdown-main" id="mainLanguageOptions">
+            <div class="language-option-main" onclick="changeMainLanguage('en', event)">🇺🇸 English</div>
+            <div class="language-option-main" onclick="changeMainLanguage('hi', event)">🇮🇳 हिन्दी</div>
+            <div class="language-option-main" onclick="changeMainLanguage('mr', event)">🇮🇳 मराठी</div>
+            <div class="language-option-main" onclick="changeMainLanguage('gu', event)">🇮🇳 ગુજરાતી</div>
+            <div class="language-option-main" onclick="changeMainLanguage('ta', event)">🇮🇳 தமிழ்</div>
         </div>
     </div>
 
@@ -599,11 +728,12 @@ $currentDomain = getCurrentDomain();
             </div>
         </section>
 
-        <!-- Products Section -->
-        <section class="products-section">
-            <h3>Our Products</h3>
-            <div class="products-grid" id="productsGrid">
+        <!-- Shopping Section -->
+        <section class="shopping-section">
+            <h3>🛒 SHOPPING</h3>
+            <div class="shopping-products" id="shoppingGrid">
                 <?php foreach ($products as $product): ?>
+                    <?php if (!$product['inquiry_only']): ?>
                     <div class="product-card">
                         <div class="product-image-container">
                             <img src="<?php echo htmlspecialchars($product['image_url']); ?>" 
@@ -625,31 +755,55 @@ $currentDomain = getCurrentDomain();
                                 </button>
                             </div>
                             <div class="product-actions">
-                                <?php if (!$product['inquiry_only']): ?>
-                                    <button class="add-to-cart-btn" onclick="addToCart(<?php echo $product['id']; ?>)">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        ADD TO CART
-                                    </button>
-                                    <button class="inquiry-btn secondary" onclick="addToInquiry(<?php echo $product['id']; ?>)">
-                                        <i class="fas fa-question-circle"></i>
-                                        INQUIRE
-                                    </button>
-                                <?php else: ?>
-                                    <button class="inquiry-btn" onclick="addToInquiry(<?php echo $product['id']; ?>)">
-                                        <i class="fas fa-question-circle"></i>
-                                        INQUIRE NOW
-                                    </button>
-                                <?php endif; ?>
+                                <button class="add-to-cart-btn" onclick="addToCart(<?php echo $product['id']; ?>)">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    ADD TO CART
+                                </button>
                             </div>
                         </div>
                     </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </section>
+        
+        <!-- Inquiry Products Section -->
+        <section class="inquiry-products-section">
+            <h3>❓ INQUIRY PRODUCTS</h3>
+            <div class="inquiry-products" id="inquiryGrid">
+                <?php foreach ($products as $product): ?>
+                    <?php if ($product['inquiry_only']): ?>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="<?php echo htmlspecialchars($product['image_url']); ?>" 
+                                 alt="<?php echo htmlspecialchars($product['title']); ?>"
+                                 class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title"><?php echo htmlspecialchars($product['title']); ?></h4>
+                            <p class="product-description"><?php echo htmlspecialchars($product['description']); ?></p>
+                            <div class="product-price">
+                                <span class="price">₹<?php echo number_format($product['price']); ?></span>
+                                <button class="whatsapp-inquiry" onclick="inquireProductWhatsApp('<?php echo htmlspecialchars($product['title']); ?>')">
+                                    <i class="fab fa-whatsapp"></i>
+                                </button>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn" onclick="addToInquiry(<?php echo $product['id']; ?>)">
+                                    <i class="fas fa-question-circle"></i>
+                                    INQUIRE NOW
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         </section>
 
         <!-- Gallery Section -->
         <section class="gallery-section">
-            <h3>Photo Gallery</h3>
+            <h3>📸 PHOTO GALLERY</h3>
             <div class="gallery-grid">
                 <?php foreach ($gallery as $image): ?>
                     <div class="gallery-item" onclick="openLightbox('<?php echo htmlspecialchars($image['image_url']); ?>')">
@@ -717,7 +871,7 @@ $currentDomain = getCurrentDomain();
     </div>
 
     <!-- Auto-scrolling Bottom Banner -->
-    <div class="banner-container" id="bottomBanner">
+    <div class="banner-container" id="bottomBanner" style="margin-bottom: 120px;">
         <div class="banner-slider">
             <?php foreach ($banners as $banner): ?>
                 <div class="banner-slide">
@@ -971,15 +1125,74 @@ $currentDomain = getCurrentDomain();
         <?php endif; ?>
         
         // Show PWA install prompt after 5 seconds if enabled
-        <?php if (($settings['show_pwa_prompt'] ?? '1') === '1'): ?>
-        setTimeout(showPWAPrompt, 5000);
-        <?php endif; ?>
+        // PWA prompt removed
         
         // Close sticky banner function
         function closeStickyBanner() {
             document.getElementById('stickyBanner').style.display = 'none';
             document.getElementById('topBanner').style.marginTop = '0';
         }
+        
+        // Language selector functionality
+        function toggleMainLanguageDropdown() {
+            const dropdown = document.getElementById('mainLanguageOptions');
+            dropdown.classList.toggle('show');
+        }
+        
+        function changeMainLanguage(langCode, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            
+            const languages = {
+                'en': 'EN',
+                'hi': 'हि',
+                'mr': 'मर',
+                'gu': 'ગુ',
+                'ta': 'த'
+            };
+            
+            document.getElementById('currentMainLanguage').textContent = languages[langCode];
+            document.getElementById('mainLanguageOptions').classList.remove('show');
+            
+            localStorage.setItem('website_language', langCode);
+            showMessage(`Language changed to ${langCode.toUpperCase()}`, 'success');
+        }
+        
+        // Close language dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector-main')) {
+                document.getElementById('mainLanguageOptions').classList.remove('show');
+            }
+        });
+        
+        // Load saved language
+        const savedLanguage = localStorage.getItem('website_language');
+        if (savedLanguage) {
+            changeMainLanguage(savedLanguage);
+        }
+        
+        // Disable cache
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) {
+                    registration.unregister();
+                }
+            });
+        }
+        
+        // Force reload without cache
+        window.addEventListener('beforeunload', function() {
+            if (performance.navigation.type === 1) {
+                // Page was reloaded
+                location.reload(true);
+            }
+        });
     </script>
+    
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </body>
 </html>

@@ -524,6 +524,21 @@ function getInquiries($limit = null) {
 }
 
 // Free Website Request Functions
+function getFreeWebsiteRequests($limit = null) {
+    global $pdo;
+    try {
+        $sql = "SELECT * FROM free_website_requests ORDER BY created_at DESC";
+        if ($limit) {
+            $sql .= " LIMIT " . intval($limit);
+        }
+        $stmt = $pdo->query($sql);
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+        return [];
+    }
+}
+
+// Free Website Request Functions
 function createFreeWebsiteRequest($data) {
     global $pdo;
     try {
