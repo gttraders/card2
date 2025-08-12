@@ -1,0 +1,430 @@
+/* Mobile First Responsive Design */
+
+/* Extra Small Devices (phones, 576px and down) */
+@media (max-width: 575.98px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .company-title {
+        font-size: 2rem;
+    }
+    
+    .director-name {
+        font-size: 1.1rem;
+    }
+    
+    .action-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .action-btn {
+        padding: 12px 8px;
+        min-height: 60px;
+    }
+    
+    .action-btn i {
+        font-size: 18px;
+    }
+    
+    .action-btn span {
+        font-size: 11px;
+    }
+    
+    .social-media {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    
+    .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .theme-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .theme-btn {
+        padding: 10px 12px;
+        font-size: 11px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .videos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pdf-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .whatsapp-share {
+        flex-direction: column;
+    }
+    
+    .whatsapp-share input {
+        border-radius: 25px;
+        margin-bottom: 10px;
+    }
+    
+    .whatsapp-share-btn {
+        border-radius: 25px;
+    }
+    
+    .bottom-nav {
+        grid-template-columns: repeat(5, 1fr);
+        padding: 5px;
+    }
+    
+    .nav-item {
+        padding: 6px 2px;
+        font-size: 9px;
+    }
+    
+    .nav-item i {
+        font-size: 14px;
+    }
+    
+    .floating-cart {
+        width: 50px;
+        height: 50px;
+        right: 15px;
+    }
+    
+    .floating-cart i {
+        font-size: 20px;
+    }
+    
+    .cart-count {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+    
+    .banner-container {
+        height: 80px;
+    }
+    
+    .qr-section {
+        padding: 20px;
+    }
+    
+    #qrcode {
+        padding: 15px;
+    }
+}
+
+/* Small Devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .action-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .theme-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .pdf-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bottom-nav {
+        grid-template-columns: repeat(9, 1fr);
+    }
+}
+
+/* Medium Devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .action-buttons {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    .videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .theme-options {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .pdf-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .action-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Large Devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .theme-options {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .pdf-buttons {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/* Extra Large Devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+    
+    .videos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Landscape Orientation */
+@media (orientation: landscape) and (max-height: 500px) {
+    .banner-container {
+        height: 60px;
+    }
+    
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .logo-placeholder {
+        font-size: 24px;
+    }
+    
+    .company-title {
+        font-size: 1.8rem;
+    }
+    
+    .director-name {
+        font-size: 1rem;
+    }
+    
+    .action-buttons {
+        margin-bottom: 20px;
+    }
+    
+    .action-btn {
+        min-height: 50px;
+        padding: 10px 8px;
+    }
+    
+    .qr-section {
+        padding: 20px;
+    }
+    
+    .floating-cart {
+        top: 20px;
+        transform: none;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    .product-image,
+    .gallery-item img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .add-review-form input,
+    .add-review-form textarea {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .whatsapp-share input {
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .banner-slider {
+        transition: none;
+    }
+    
+    .animate-pulse {
+        animation: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .banner-container,
+    .bottom-nav,
+    .floating-cart,
+    .action-buttons,
+    .share-section,
+    .add-review-form {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+    
+    .product-card,
+    .review-card,
+    .qr-section {
+        background: white !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+    
+    .company-title,
+    .director-name {
+        color: black !important;
+    }
+    
+    .contact-item {
+        background: #f5f5f5 !important;
+        color: black !important;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-contrast: high) {
+    .action-btn,
+    .pdf-btn,
+    .add-to-cart-btn,
+    .inquiry-btn {
+        border: 2px solid currentColor;
+    }
+    
+    .contact-item,
+    .product-card,
+    .review-card {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Focus Styles for Keyboard Navigation */
+.action-btn:focus,
+.theme-btn:focus,
+.pdf-btn:focus,
+.add-to-cart-btn:focus,
+.inquiry-btn:focus,
+.nav-item:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Hover Effects for Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+    .action-btn:hover,
+    .product-card:hover,
+    .gallery-item:hover {
+        transform: none;
+    }
+    
+    .action-btn:active,
+    .product-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Custom Scrollbar */
+@media (min-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-color);
+    }
+}
